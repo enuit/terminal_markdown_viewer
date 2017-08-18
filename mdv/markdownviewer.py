@@ -996,10 +996,11 @@ def do_code_hilite(md, what='all'):
         else:
             out.append('\n'.join(block))
     return '\n'.join(out)
-
 def_enc_set = False
 def fix_py2_default_encoding():
     global def_enc_set
+    if sys.version_info[0] >= 3:
+        def_enc_set = True
     if not def_enc_set:
         # Make Py2 > Py3:
         import imp
